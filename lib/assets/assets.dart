@@ -74,13 +74,13 @@ iconBtn(
         double iconSize = Dimens.defaultIconSize,
         double splashRadius = Dimens.iconSplashRadius,
         String tooltip = '',
-        double padding = 0}) =>
+        EdgeInsets padding = EdgeInsets.zero}) =>
     IconButton(
         color: color,
         tooltip: tooltip,
         iconSize: iconSize,
         splashRadius: splashRadius,
-        padding: EdgeInsets.all(padding),
+        padding: padding,
         onPressed: onPressed,
         icon: icon);
 

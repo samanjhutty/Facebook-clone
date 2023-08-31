@@ -3,14 +3,14 @@ import 'package:facebook/assets/strings.dart';
 import 'package:facebook/assets/theme.dart';
 import 'package:flutter/material.dart';
 
-class MenuBar extends StatefulWidget {
-  const MenuBar({super.key});
+class MyMenuBar extends StatefulWidget {
+  const MyMenuBar({super.key});
 
   @override
   _MenuBarState createState() => _MenuBarState();
 }
 
-class _MenuBarState extends State<MenuBar> {
+class _MenuBarState extends State<MyMenuBar> {
   @override
   Widget build(BuildContext context) {
     return Wrap(
@@ -24,10 +24,10 @@ class _MenuBarState extends State<MenuBar> {
                 foregroundColor:
                     MaterialStatePropertyAll(Themes.defaultIconColor)),
             onPressed: () {},
-            child: Wrap(
+            child: const Wrap(
               crossAxisAlignment: WrapCrossAlignment.center,
               spacing: Dimens.margin,
-              children: const [Icon(Icons.post_add), Text(Strings.text)],
+              children: [Icon(Icons.post_add), Text(Strings.text)],
             )),
         const SizedBox(
             height: Dimens.xMargin, child: VerticalDivider(thickness: 1)),
@@ -38,10 +38,10 @@ class _MenuBarState extends State<MenuBar> {
                 foregroundColor:
                     MaterialStatePropertyAll(Themes.defaultIconColor)),
             onPressed: () {},
-            child: Wrap(
+            child: const Wrap(
               crossAxisAlignment: WrapCrossAlignment.center,
               spacing: Dimens.margin,
-              children: const [
+              children: [
                 Icon(Icons.video_call_outlined),
                 Text(Strings.liveVid)
               ],
@@ -55,10 +55,10 @@ class _MenuBarState extends State<MenuBar> {
                 foregroundColor:
                     MaterialStatePropertyAll(Themes.defaultIconColor)),
             onPressed: () {},
-            child: Wrap(
+            child: const Wrap(
               crossAxisAlignment: WrapCrossAlignment.center,
               spacing: Dimens.margin,
-              children: const [
+              children: [
                 Icon(Icons.location_on_outlined),
                 Text(Strings.location)
               ],

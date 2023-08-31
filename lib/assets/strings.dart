@@ -46,6 +46,8 @@ class Strings {
   static const noti = 'Notifications';
   static const notiInfo = 'view all notifications';
   static const friendReq = 'Friend Requests';
+  static const autoplay = 'AutoPlay';
+  static const loopTip = 'Play videos in a loop';
 
   static const List<String> marketItems = [
     'iPhone pro',

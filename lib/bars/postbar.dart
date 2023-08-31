@@ -19,7 +19,7 @@ class _PostbarState extends State<Postbar> {
     return ListTile(
       leading: iconBtn(
         tooltip: Strings.profileTip,
-        padding: Dimens.minMargin,
+        padding: const EdgeInsets.all(Dimens.minMargin),
         onPressed: () => gotoPage(page: const Profile()),
         icon: const CircleAvatar(
           backgroundImage: AssetImage(ImagePath.myImage),

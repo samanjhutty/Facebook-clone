@@ -1,7 +1,6 @@
 import 'package:facebook/assets/assets.dart';
 import 'package:facebook/assets/dimens.dart';
 import 'package:facebook/assets/strings.dart';
-import 'package:facebook/assets/theme.dart';
 import 'package:facebook/model/messages_model.dart';
 import 'package:flutter/material.dart';
 

@@ -6,7 +6,7 @@ class Dimens {
   static const double defaultIconSize = 24;
   static const double miniIconSize = 16;
   static const double punyIconSize = 12;
-  static const double avatarLarge = 72;
+  static const double avatarLarge = 100;
   static const double minMargin = 4;
   static const double margin = 8;
   static const double xMargin = 16;

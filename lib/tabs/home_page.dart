@@ -18,7 +18,7 @@ class _HomeTabState extends State<HomeTab> {
           Divider(thickness: 1),
           StoryBar(),
           Divider(thickness: 1),
-          MenuBar(),
+          MyMenuBar(),
           Divider(thickness: 3),
           Posts()
         ],
