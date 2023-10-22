@@ -39,7 +39,7 @@ class MyMainTab extends StatefulWidget {
   const MyMainTab({super.key});
 
   @override
-  _MyMainTabState createState() => _MyMainTabState();
+  State<MyMainTab> createState() => _MyMainTabState();
 }
 
 class _MyMainTabState extends State<MyMainTab> with TickerProviderStateMixin {

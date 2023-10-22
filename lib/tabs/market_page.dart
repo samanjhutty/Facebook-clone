@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class MarketTab extends StatefulWidget {
   const MarketTab({super.key});
   @override
-  _MarketTabState createState() => _MarketTabState();
+  State<MarketTab> createState() => _MarketTabState();
 }
 
 class _MarketTabState extends State<MarketTab> {

@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 class MessagesTab extends StatefulWidget {
   const MessagesTab({super.key});
   @override
-  _MessagesTabState createState() => _MessagesTabState();
+  State<MessagesTab> createState() => _MessagesTabState();
 }
 
 class _MessagesTabState extends State<MessagesTab> {

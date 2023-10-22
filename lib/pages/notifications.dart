@@ -8,7 +8,7 @@ class Notifications extends StatefulWidget {
   const Notifications({super.key});
 
   @override
-  _NotificationState createState() => _NotificationState();
+  State<Notifications> createState() => _NotificationState();
 }
 
 class _NotificationState extends State<Notifications> {

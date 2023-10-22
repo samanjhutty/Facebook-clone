@@ -7,7 +7,7 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 class VideosTab extends StatefulWidget {
   const VideosTab({super.key});
   @override
-  _VideosTabState createState() => _VideosTabState();
+  State<VideosTab> createState() => _VideosTabState();
 }
 
 class _VideosTabState extends State<VideosTab> {

@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 class FriendsTab extends StatefulWidget {
   const FriendsTab({super.key});
   @override
-  _FriendsTabState createState() => _FriendsTabState();
+  State<FriendsTab> createState() => _FriendsTabState();
 }
 
 class _FriendsTabState extends State<FriendsTab> {
