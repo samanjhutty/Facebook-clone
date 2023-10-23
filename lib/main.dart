@@ -78,11 +78,13 @@ class _MyMainTabState extends State<MyMainTab> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final ColorScheme scheme = Theme.of(context).colorScheme;
     return WillPopScope(
         onWillPop: _onWillPop,
         child: Scaffold(
           key: _scaffoldKey,
           appBar: AppBar(
+            foregroundColor: scheme.primary,
             elevation: 0,
             actions: [
               iconBtn(
@@ -92,19 +94,17 @@ class _MyMainTabState extends State<MyMainTab> with TickerProviderStateMixin {
                     showSnackbar(context: context, message: Strings.searchTap);
                   },
                   icon: const Icon(Icons.search)),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: Dimens.xMargin),
-                child: iconBtn(
-                    tooltip: Strings.menu,
-                    splashRadius: Dimens.iconSplashRadius,
-                    onPressed: () {
-                      _scaffoldKey.currentState?.openEndDrawer();
-                    },
-                    icon: const Icon(Icons.menu)),
-              ),
+              iconBtn(
+                  tooltip: Strings.menu,
+                  splashRadius: Dimens.iconSplashRadius,
+                  onPressed: () {
+                    _scaffoldKey.currentState?.openEndDrawer();
+                  },
+                  icon: const Icon(Icons.menu)),
             ],
             title: const Text(Strings.appName),
             bottom: TabBar(
+              indicatorSize: TabBarIndicatorSize.tab,
               indicator: RectangularIndicator(
                   color: Themes.primaryColor,
                   topLeftRadius: Dimens.circularRadius,
@@ -112,7 +112,7 @@ class _MyMainTabState extends State<MyMainTab> with TickerProviderStateMixin {
                   bottomLeftRadius: Dimens.circularRadius,
                   bottomRightRadius: Dimens.circularRadius,
                   horizontalPadding: Dimens.xMargin,
-                  verticalPadding: 5),
+                  verticalPadding: Dimens.minMargin),
               tabs: mainTabs,
               controller: _tabController,
               overlayColor: const MaterialStatePropertyAll(Colors.transparent),

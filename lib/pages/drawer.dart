@@ -17,12 +17,12 @@ class MyDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-        backgroundColor: Colors.white,
+        width: MediaQuery.of(context).size.width,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             SizedBox(
-                height: 80,
+                height: 100,
                 child: DrawerHeader(
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
