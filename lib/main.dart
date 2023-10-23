@@ -83,12 +83,9 @@ class _MyMainTabState extends State<MyMainTab> with TickerProviderStateMixin {
         child: Scaffold(
           key: _scaffoldKey,
           appBar: AppBar(
-            foregroundColor: Colors.black87,
             elevation: 0,
-            backgroundColor: Colors.transparent,
             actions: [
               iconBtn(
-                  color: Colors.black87,
                   tooltip: Strings.search,
                   splashRadius: Dimens.iconSplashRadius,
                   onPressed: () {
@@ -98,7 +95,6 @@ class _MyMainTabState extends State<MyMainTab> with TickerProviderStateMixin {
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: Dimens.xMargin),
                 child: iconBtn(
-                    color: Colors.black87,
                     tooltip: Strings.menu,
                     splashRadius: Dimens.iconSplashRadius,
                     onPressed: () {
