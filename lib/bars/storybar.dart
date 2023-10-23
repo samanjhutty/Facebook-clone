@@ -10,7 +10,7 @@ class StoryBar extends StatefulWidget {
   const StoryBar({super.key});
 
   @override
-  _StoryBarState createState() => _StoryBarState();
+  State<StoryBar> createState() => _StoryBarState();
 }
 
 class _StoryBarState extends State<StoryBar> {

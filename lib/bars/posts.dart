@@ -10,7 +10,7 @@ class Posts extends StatefulWidget {
   const Posts({super.key});
 
   @override
-  _PostsState createState() => _PostsState();
+  State<Posts> createState() => _PostsState();
 }
 
 class _PostsState extends State<Posts> {

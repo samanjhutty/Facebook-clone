@@ -7,7 +7,7 @@ class MyMenuBar extends StatefulWidget {
   const MyMenuBar({super.key});
 
   @override
-  _MenuBarState createState() => _MenuBarState();
+  State<MyMenuBar> createState() => _MenuBarState();
 }
 
 class _MenuBarState extends State<MyMenuBar> {

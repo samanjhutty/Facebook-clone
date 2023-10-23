@@ -28,7 +28,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        theme: ThemeData(primaryColor: Themes.primaryColor),
+        theme: ThemeData(
+            colorScheme: ColorScheme.fromSeed(seedColor: Themes.primaryColor),
+            useMaterial3: true),
         debugShowCheckedModeBanner: false,
         navigatorKey: navigattorkey,
         home: const MyMainTab());

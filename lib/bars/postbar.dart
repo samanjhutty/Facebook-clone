@@ -10,7 +10,7 @@ class Postbar extends StatefulWidget {
   const Postbar({super.key});
 
   @override
-  _PostbarState createState() => _PostbarState();
+  State<Postbar> createState() => _PostbarState();
 }
 
 class _PostbarState extends State<Postbar> {
