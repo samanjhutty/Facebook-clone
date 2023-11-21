@@ -1,3 +1,4 @@
+import 'package:facebook/assets/assets.dart';
 import 'package:facebook/assets/dimens.dart';
 import 'package:facebook/assets/image_path.dart';
 import 'package:facebook/assets/theme.dart';
@@ -14,6 +15,8 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
+    final ColorScheme scheme = Theme.of(context).colorScheme;
+
     return SafeArea(
       child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: Dimens.margin),
@@ -63,11 +66,7 @@ class _ProfileState extends State<Profile> {
                     child: Padding(
                   padding: const EdgeInsets.only(right: Dimens.margin),
                   child: TextButton.icon(
-                      style: TextButton.styleFrom(
-                          backgroundColor: Themes.layoutBackgroundLight,
-                          foregroundColor: Themes.primaryColor,
-                          padding: const EdgeInsets.symmetric(
-                              vertical: Dimens.xMargin)),
+                      style: textBtnStyle(border: 40, color: scheme.primary),
                       onPressed: () {},
                       icon: const Icon(Icons.add_rounded),
                       label: const Text('Add to Story')),
@@ -76,11 +75,7 @@ class _ProfileState extends State<Profile> {
                   child: Padding(
                     padding: const EdgeInsets.only(right: Dimens.margin),
                     child: TextButton.icon(
-                        style: TextButton.styleFrom(
-                            backgroundColor: Themes.layoutBackgroundLight,
-                            foregroundColor: Themes.primaryColor,
-                            padding: const EdgeInsets.symmetric(
-                                vertical: Dimens.xMargin)),
+                        style: textBtnStyle(border: 40, color: scheme.primary),
                         onPressed: () {},
                         icon: const Icon(Icons.edit),
                         label: const Text('Edit Profile')),

@@ -16,6 +16,7 @@ class _FriendsTabState extends State<FriendsTab> {
   @override
   Widget build(BuildContext context) {
     double myWidth = MediaQuery.of(context).size.width;
+    final ColorScheme scheme = Theme.of(context).colorScheme;
 
     return SafeArea(
       child: Padding(
@@ -82,7 +83,7 @@ class _FriendsTabState extends State<FriendsTab> {
                                                 style: textBtnStyle(
                                                     border:
                                                         Dimens.miniBorderRadius,
-                                                    color: Themes.primaryColor),
+                                                    color: scheme.primary),
                                                 onPressed:
                                                     profileData[i].confirmReq,
                                                 child: const Text(
@@ -94,9 +95,9 @@ class _FriendsTabState extends State<FriendsTab> {
                                                 horizontal: Dimens.minMargin),
                                             child: TextButton(
                                               style: textBtnStyle(
+                                                  color: scheme.primary,
                                                   border:
-                                                      Dimens.miniBorderRadius,
-                                                  color: Themes.primaryColor),
+                                                      Dimens.miniBorderRadius),
                                               onPressed:
                                                   profileData[i].deleteReq,
                                               child: const Text(Strings.delete),

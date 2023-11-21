@@ -17,7 +17,7 @@ import 'package:window_size/window_size.dart';
 void main(List<String> args) {
   WidgetsFlutterBinding.ensureInitialized();
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
-    setWindowMinSize(const Size(460, 800));
+    setWindowMinSize(const Size(500, 800));
   }
   runApp(const MyApp());
 }
@@ -78,14 +78,12 @@ class _MyMainTabState extends State<MyMainTab> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final ColorScheme scheme = Theme.of(context).colorScheme;
     return WillPopScope(
         onWillPop: _onWillPop,
         child: Scaffold(
           key: _scaffoldKey,
           appBar: AppBar(
-            foregroundColor: scheme.primary,
-            elevation: 0,
+            title: const Text(Strings.appName),
             actions: [
               iconBtn(
                   tooltip: Strings.search,
@@ -102,23 +100,22 @@ class _MyMainTabState extends State<MyMainTab> with TickerProviderStateMixin {
                   },
                   icon: const Icon(Icons.menu)),
             ],
-            title: const Text(Strings.appName),
             bottom: TabBar(
-              indicatorSize: TabBarIndicatorSize.tab,
-              indicator: RectangularIndicator(
-                  color: Themes.primaryColor,
-                  topLeftRadius: Dimens.circularRadius,
-                  topRightRadius: Dimens.circularRadius,
-                  bottomLeftRadius: Dimens.circularRadius,
-                  bottomRightRadius: Dimens.circularRadius,
-                  horizontalPadding: Dimens.xMargin,
-                  verticalPadding: Dimens.minMargin),
-              tabs: mainTabs,
-              controller: _tabController,
-              overlayColor: const MaterialStatePropertyAll(Colors.transparent),
-              labelColor: Colors.white,
-              unselectedLabelColor: Themes.iconDisabled,
-            ),
+                indicatorSize: TabBarIndicatorSize.tab,
+                indicator: RectangularIndicator(
+                    color: Themes.primaryColor,
+                    topLeftRadius: Dimens.circularRadius,
+                    topRightRadius: Dimens.circularRadius,
+                    bottomLeftRadius: Dimens.circularRadius,
+                    bottomRightRadius: Dimens.circularRadius,
+                    horizontalPadding: Dimens.xMargin,
+                    verticalPadding: Dimens.minMargin),
+                tabs: mainTabs,
+                controller: _tabController,
+                overlayColor:
+                    const MaterialStatePropertyAll(Colors.transparent),
+                labelColor: Colors.white,
+                unselectedLabelColor: Themes.iconDisabled),
           ),
           endDrawer: const MyDrawer(),
           body: TabBarView(

@@ -18,15 +18,14 @@ class _PostbarState extends State<Postbar> {
   Widget build(BuildContext context) {
     return ListTile(
       leading: iconBtn(
-        tooltip: Strings.profileTip,
-        padding: const EdgeInsets.all(Dimens.minMargin),
-        onPressed: () => gotoPage(page: const Profile()),
-        icon: const CircleAvatar(
-          backgroundImage: AssetImage(ImagePath.myImage),
-        ),
-      ),
+          tooltip: Strings.profileTip,
+          padding: const EdgeInsets.all(Dimens.minMargin),
+          onPressed: () => gotoPage(page: const Profile()),
+          icon: const CircleAvatar(
+            backgroundImage: AssetImage(ImagePath.myImage),
+          )),
       title: Container(
-        margin: const EdgeInsets.symmetric(horizontal: Dimens.margin),
+        margin: const EdgeInsets.symmetric(horizontal: Dimens.minMargin),
         child: TextButton(
           onPressed: () {},
           style: textBtnStyle(

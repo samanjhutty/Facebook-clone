@@ -32,8 +32,6 @@ gotoPage({required Widget page}) =>
                           Navigator.pop(context);
                         },
                         icon: const CircleAvatar(
-                          backgroundColor: Colors.black45,
-                          foregroundColor: Colors.white,
                           child: Icon(Icons.arrow_back_rounded),
                         ))),
               ]),
@@ -44,16 +42,17 @@ cardView(
         required Widget title,
         required VoidCallback onTap}) =>
     Card(
-        color: Themes.cardColor,
         child: TextButton.icon(
-          onPressed: onTap,
-          icon: icon,
-          label: title,
-          style: TextButton.styleFrom(
-              fixedSize: const Size(160, 80),
-              alignment: Alignment.centerLeft,
-              foregroundColor: Themes.fontColor),
-        ));
+      onPressed: onTap,
+      icon: icon,
+      label: title,
+      style: TextButton.styleFrom(
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(10))),
+        fixedSize: const Size(160, 80),
+        alignment: Alignment.centerLeft,
+      ),
+    ));
 
 textBtnStyle(
         {required double border,
@@ -62,21 +61,18 @@ textBtnStyle(
     TextButton.styleFrom(
         alignment: alignment,
         backgroundColor: Themes.layoutBackgroundLight,
-        padding: const EdgeInsets.symmetric(
-            vertical: Dimens.xMargin, horizontal: Dimens.xxMargin),
+        padding: const EdgeInsets.all(Dimens.xMargin),
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(border))),
         foregroundColor: color);
 iconBtn(
         {required VoidCallback onPressed,
         required Widget icon,
-        Color? color = Themes.defaultIconColor,
         double iconSize = Dimens.defaultIconSize,
         double splashRadius = Dimens.iconSplashRadius,
         String tooltip = '',
         EdgeInsets padding = EdgeInsets.zero}) =>
     IconButton(
-        color: color,
         tooltip: tooltip,
         iconSize: iconSize,
         splashRadius: splashRadius,

@@ -20,12 +20,11 @@ class _PostsState extends State<Posts> {
       children: [
         for (int i = 0; i < postsData.length; i++) ...[
           ListTile(
+            minVerticalPadding: 0,
             leading: iconBtn(
-              icon: CircleAvatar(
-                backgroundImage: AssetImage(postsData[i].avatarImage),
-              ),
-              onPressed: postsData[i].profileOnTap,
-            ),
+                icon: CircleAvatar(
+                    backgroundImage: AssetImage(postsData[i].avatarImage)),
+                onPressed: postsData[i].profileOnTap),
             title: TextButton(
                 style: const ButtonStyle(
                     padding: MaterialStatePropertyAll(EdgeInsets.zero),
@@ -34,31 +33,24 @@ class _PostsState extends State<Posts> {
                     overlayColor: MaterialStatePropertyAll(Colors.transparent)),
                 onPressed: postsData[i].profileOnTap,
                 child: Text(postsData[i].username)),
-            subtitle: Wrap(spacing: Dimens.xMargin, children: [
-              TextButton.icon(
-                style: const ButtonStyle(
-                    padding: MaterialStatePropertyAll(EdgeInsets.zero),
-                    overlayColor: MaterialStatePropertyAll(Colors.transparent),
-                    textStyle: MaterialStatePropertyAll(
-                        TextStyle(fontWeight: FontWeight.normal))),
-                onPressed: null,
-                label: Text(postsData[i].location),
-                icon: const Icon(
-                  Icons.location_on,
+            subtitle: Wrap(spacing: Dimens.margin, children: [
+              Row(mainAxisSize: MainAxisSize.min, children: [
+                Icon(Icons.location_on,
+                    size: Dimens.miniIconSize, color: Colors.grey[600]),
+                const SizedBox(width: Dimens.minMargin),
+                Text(postsData[i].location,
+                    style: TextStyle(color: Colors.grey[600])),
+              ]),
+              Row(mainAxisSize: MainAxisSize.min, children: [
+                Icon(
+                  Icons.watch_later_outlined,
                   size: Dimens.miniIconSize,
+                  color: Colors.grey[600],
                 ),
-              ),
-              TextButton.icon(
-                  style: const ButtonStyle(
-                      padding: MaterialStatePropertyAll(EdgeInsets.zero),
-                      overlayColor:
-                          MaterialStatePropertyAll(Colors.transparent),
-                      textStyle: MaterialStatePropertyAll(
-                          TextStyle(fontWeight: FontWeight.normal))),
-                  onPressed: null,
-                  label: Text(postsData[i].time),
-                  icon: const Icon(Icons.watch_later_outlined,
-                      size: Dimens.miniIconSize))
+                const SizedBox(width: Dimens.minMargin),
+                Text(postsData[i].time,
+                    style: TextStyle(color: Colors.grey[600])),
+              ])
             ]),
             trailing: IconButton(
               splashRadius: Dimens.iconSplashRadius,

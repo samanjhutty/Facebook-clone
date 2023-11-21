@@ -56,10 +56,11 @@ class _StoryBarState extends State<StoryBar> {
                           decoration: BoxDecoration(
                               color: Themes.layoutBackgroundLight,
                               shape: BoxShape.circle),
-                          child: const CircleAvatar(
+                          child: CircleAvatar(
                             radius: Dimens.borderRadius,
-                            backgroundColor: Themes.primaryColor,
-                            child: Icon(
+                            backgroundColor:
+                                Theme.of(context).colorScheme.primary,
+                            child: const Icon(
                               Icons.add_rounded,
                               color: Colors.white,
                             ),

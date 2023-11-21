@@ -16,7 +16,9 @@ class MyDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final ColorScheme scheme = Theme.of(context).colorScheme;
     return Drawer(
+        backgroundColor: Colors.white,
         width: MediaQuery.of(context).size.width,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -32,7 +34,8 @@ class MyDrawer extends StatelessWidget {
                           onPressed: () => Navigator.pop(context),
                           icon: const Icon(Icons.arrow_back),
                           splashRadius: Dimens.iconSplashRadius),
-                      const Text(Strings.menu),
+                      const Text(Strings.menu,
+                          style: TextStyle(fontWeight: FontWeight.bold)),
                       IconButton(
                           onPressed: () {},
                           icon: const Icon(Icons.search),
@@ -48,7 +51,7 @@ class MyDrawer extends StatelessWidget {
                     title: const Text(
                       Strings.username,
                       style: TextStyle(
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w600,
                           fontSize: Dimens.titleMed),
                     ),
                     subtitle: const Text(Strings.profileTip),
@@ -64,35 +67,34 @@ class MyDrawer extends StatelessWidget {
                           title: const Text(Strings.covid)),
                       cardView(
                           onTap: () => gotoPage(page: const Notifications()),
-                          icon: const Icon(Icons.notifications,
-                              color: Themes.primaryColor),
+                          icon:
+                              Icon(Icons.notifications, color: scheme.primary),
                           title: const Text(Strings.noti)),
                     ]),
                     TableRow(children: [
                       cardView(
                           onTap: () => gotoPage(page: const FriendsTab()),
-                          icon: const Icon(Icons.people_alt,
-                              color: Themes.primaryColor),
+                          icon: Icon(Icons.people_alt, color: scheme.primary),
                           title: const Text(Strings.friends)),
                       cardView(
                           onTap: () => gotoPage(
                                   page: ListView(
                                 children: const [Posts()],
                               )),
-                          icon: const Icon(Icons.pages_rounded,
-                              color: Themes.primaryColor),
+                          icon:
+                              Icon(Icons.pages_rounded, color: scheme.primary),
                           title: const Text(Strings.pages)),
                     ]),
                     TableRow(children: [
                       cardView(
                           onTap: () => gotoPage(page: const VideosTab()),
-                          icon: const Icon(Icons.video_collection_rounded,
-                              color: Themes.primaryColor),
+                          icon: Icon(Icons.video_collection_rounded,
+                              color: scheme.primary),
                           title: const Text(Strings.videos)),
                       cardView(
                           onTap: () => gotoPage(page: const MarketTab()),
-                          icon: const Icon(Icons.store_rounded,
-                              color: Themes.primaryColor),
+                          icon:
+                              Icon(Icons.store_rounded, color: scheme.primary),
                           title: const Text(Strings.market)),
                     ])
                   ]),
