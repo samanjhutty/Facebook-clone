@@ -3,7 +3,7 @@ import 'package:facebook/assets/dimens.dart';
 import 'package:facebook/assets/image_path.dart';
 import 'package:facebook/assets/strings.dart';
 import 'package:facebook/assets/theme.dart';
-import 'package:facebook/pages/profile.dart';
+import 'package:facebook/view/pages/profile.dart';
 import 'package:flutter/material.dart';
 
 class Postbar extends StatefulWidget {

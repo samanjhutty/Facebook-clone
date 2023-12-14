@@ -3,12 +3,12 @@ import 'package:facebook/assets/dimens.dart';
 import 'package:facebook/assets/image_path.dart';
 import 'package:facebook/assets/strings.dart';
 import 'package:facebook/assets/theme.dart';
-import 'package:facebook/bars/posts.dart';
-import 'package:facebook/pages/notifications.dart';
-import 'package:facebook/tabs/friends_page.dart';
-import 'package:facebook/tabs/market_page.dart';
-import 'package:facebook/pages/profile.dart';
-import 'package:facebook/tabs/videos_page.dart';
+import 'package:facebook/view/widgets/posts.dart';
+import 'package:facebook/view/pages/notifications.dart';
+import 'package:facebook/view/tabs/friends_page.dart';
+import 'package:facebook/view/tabs/market_page.dart';
+import 'package:facebook/view/pages/profile.dart';
+import 'package:facebook/view/tabs/videos_page.dart';
 import 'package:flutter/material.dart';
 
 class MyDrawer extends StatelessWidget {

@@ -2,15 +2,12 @@ import 'package:facebook/assets/dimens.dart';
 import 'package:facebook/assets/strings.dart';
 import 'package:facebook/assets/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 final navigattorkey = GlobalKey<NavigatorState>();
-showSnackbar(
-    {required BuildContext context, required String message, int time = 1000}) {
-  var snackBar = SnackBar(
-    content: Text(message),
-    duration: Duration(milliseconds: time),
-  );
-  return ScaffoldMessenger.of(context).showSnackBar(snackBar);
+showSnackbar({required String message}) async {
+  Get.closeAllSnackbars();
+  Get.rawSnackbar(message: message);
 }
 
 gotoPage({required Widget page}) =>

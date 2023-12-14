@@ -1,7 +1,7 @@
-import 'package:facebook/bars/menubar.dart';
-import 'package:facebook/bars/postbar.dart';
-import 'package:facebook/bars/posts.dart';
-import 'package:facebook/bars/storybar.dart';
+import 'package:facebook/view/widgets/menubar.dart';
+import 'package:facebook/view/widgets/postbar.dart';
+import 'package:facebook/view/widgets/posts.dart';
+import 'package:facebook/view/widgets/storybar.dart';
 import 'package:flutter/material.dart';
 
 class HomeTab extends StatefulWidget {

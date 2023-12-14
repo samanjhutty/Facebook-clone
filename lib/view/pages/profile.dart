@@ -2,7 +2,7 @@ import 'package:facebook/assets/assets.dart';
 import 'package:facebook/assets/dimens.dart';
 import 'package:facebook/assets/image_path.dart';
 import 'package:facebook/assets/theme.dart';
-import 'package:facebook/bars/posts.dart';
+import 'package:facebook/view/widgets/posts.dart';
 import 'package:flutter/material.dart';
 
 class Profile extends StatefulWidget {

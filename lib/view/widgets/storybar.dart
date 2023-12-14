@@ -25,8 +25,7 @@ class _StoryBarState extends State<StoryBar> {
           spacing: Dimens.margin,
           children: [
             GestureDetector(
-                onTap: () => showSnackbar(
-                    context: context, message: Strings.addStoryTap),
+                onTap: () => showSnackbar(message: Strings.addStoryTap),
                 child: Container(
                   margin: const EdgeInsets.only(left: Dimens.margin),
                   height: myHeight,

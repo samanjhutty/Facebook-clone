@@ -1,12 +1,9 @@
-// ignore_for_file: avoid_print
-
 import 'dart:math';
-
 import 'package:facebook/assets/assets.dart';
 import 'package:facebook/assets/image_path.dart';
 import 'package:facebook/assets/strings.dart';
 import 'package:facebook/model/model.dart';
-import 'package:facebook/pages/profile.dart';
+import 'package:facebook/view/pages/profile.dart';
 
 List<AppModel> marketData = [
   AppModel(
@@ -16,7 +13,7 @@ List<AppModel> marketData = [
       data: ImagePath.bgImage[Random().nextInt(11)],
       caption: '₹${Random().nextInt(100) + 50}',
       text: Strings.marketItems[Random().nextInt(11)],
-      onTap: () => print('image clicked')),
+      onTap: () => showSnackbar(message: 'image clicked')),
   AppModel(
       profileImage: ImagePath.profileImage[Random().nextInt(11)],
       username: Strings.username[1],
@@ -24,7 +21,7 @@ List<AppModel> marketData = [
       data: ImagePath.bgImage[Random().nextInt(11)],
       caption: '₹${Random().nextInt(100) + 50}',
       text: Strings.marketItems[Random().nextInt(11)],
-      onTap: () => print('image clicked')),
+      onTap: () => showSnackbar(message: 'image clicked')),
   AppModel(
       profileImage: ImagePath.profileImage[Random().nextInt(11)],
       username: Strings.username[2],
@@ -32,7 +29,7 @@ List<AppModel> marketData = [
       data: ImagePath.bgImage[Random().nextInt(11)],
       caption: '₹${Random().nextInt(100) + 50}',
       text: Strings.marketItems[Random().nextInt(11)],
-      onTap: () => print('image clicked')),
+      onTap: () => showSnackbar(message: 'image clicked')),
   AppModel(
       profileImage: ImagePath.profileImage[Random().nextInt(11)],
       username: Strings.username[3],
@@ -40,7 +37,7 @@ List<AppModel> marketData = [
       data: ImagePath.bgImage[Random().nextInt(11)],
       caption: '₹${Random().nextInt(100) + 50}',
       text: Strings.marketItems[Random().nextInt(11)],
-      onTap: () => print('image clicked')),
+      onTap: () => showSnackbar(message: 'image clicked')),
   AppModel(
       profileImage: ImagePath.profileImage[Random().nextInt(11)],
       username: Strings.username[4],
@@ -48,7 +45,7 @@ List<AppModel> marketData = [
       data: ImagePath.bgImage[Random().nextInt(11)],
       caption: '₹${Random().nextInt(100) + 50}',
       text: Strings.marketItems[Random().nextInt(11)],
-      onTap: () => print('image clicked')),
+      onTap: () => showSnackbar(message: 'image clicked')),
   AppModel(
       profileImage: ImagePath.profileImage[Random().nextInt(11)],
       username: Strings.username[5],
@@ -56,7 +53,7 @@ List<AppModel> marketData = [
       data: ImagePath.bgImage[Random().nextInt(11)],
       caption: '₹${Random().nextInt(100) + 50}',
       text: Strings.marketItems[Random().nextInt(11)],
-      onTap: () => print('image clicked')),
+      onTap: () => showSnackbar(message: 'image clicked')),
   AppModel(
       profileImage: ImagePath.profileImage[Random().nextInt(11)],
       username: Strings.username[6],
@@ -64,7 +61,7 @@ List<AppModel> marketData = [
       data: ImagePath.bgImage[Random().nextInt(11)],
       caption: '₹${Random().nextInt(100) + 50}',
       text: Strings.marketItems[Random().nextInt(11)],
-      onTap: () => print('image clicked')),
+      onTap: () => showSnackbar(message: 'image clicked')),
   AppModel(
       profileImage: ImagePath.profileImage[Random().nextInt(11)],
       username: Strings.username[7],
@@ -72,7 +69,7 @@ List<AppModel> marketData = [
       data: ImagePath.bgImage[Random().nextInt(11)],
       caption: '₹${Random().nextInt(100) + 50}',
       text: Strings.marketItems[Random().nextInt(11)],
-      onTap: () => print('image clicked')),
+      onTap: () => showSnackbar(message: 'image clicked')),
   AppModel(
       profileImage: ImagePath.profileImage[Random().nextInt(11)],
       username: Strings.username[8],
@@ -80,7 +77,7 @@ List<AppModel> marketData = [
       data: ImagePath.bgImage[Random().nextInt(11)],
       caption: '₹${Random().nextInt(100) + 50}',
       text: Strings.marketItems[Random().nextInt(11)],
-      onTap: () => print('image clicked')),
+      onTap: () => showSnackbar(message: 'image clicked')),
   AppModel(
       profileImage: ImagePath.profileImage[Random().nextInt(11)],
       username: Strings.username[9],
@@ -88,7 +85,7 @@ List<AppModel> marketData = [
       data: ImagePath.bgImage[Random().nextInt(11)],
       caption: '₹${Random().nextInt(100) + 50}',
       text: Strings.marketItems[Random().nextInt(11)],
-      onTap: () => print('image clicked')),
+      onTap: () => showSnackbar(message: 'image clicked')),
   AppModel(
       profileImage: ImagePath.profileImage[Random().nextInt(11)],
       username: Strings.username[10],
@@ -96,5 +93,5 @@ List<AppModel> marketData = [
       data: ImagePath.bgImage[Random().nextInt(11)],
       caption: '₹${Random().nextInt(100) + 50}',
       text: Strings.marketItems[Random().nextInt(11)],
-      onTap: () => print('image clicked')),
+      onTap: () => showSnackbar(message: 'image clicked')),
 ];
