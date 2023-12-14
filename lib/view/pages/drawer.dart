@@ -1,4 +1,3 @@
-import 'package:facebook/assets/assets.dart';
 import 'package:facebook/assets/dimens.dart';
 import 'package:facebook/assets/image_path.dart';
 import 'package:facebook/assets/strings.dart';
@@ -10,6 +9,7 @@ import 'package:facebook/view/tabs/market_page.dart';
 import 'package:facebook/view/pages/profile.dart';
 import 'package:facebook/view/tabs/videos_page.dart';
 import 'package:flutter/material.dart';
+import '../widgets/assets.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});

@@ -2,11 +2,11 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-import '../../assets/mywidgets.dart';
 import '../../controller/signup_controller.dart';
+import '../widgets/mywidgets.dart';
 
 class MobileLogin extends StatefulWidget {
-  const MobileLogin({Key? key}) : super(key: key);
+  const MobileLogin({super.key});
 
   @override
   State<MobileLogin> createState() => _MobileLoginState();

@@ -1,9 +1,9 @@
 import 'dart:math';
-import 'package:facebook/assets/assets.dart';
 import 'package:facebook/assets/image_path.dart';
 import 'package:facebook/assets/strings.dart';
 import 'package:facebook/model/model.dart';
 import 'package:facebook/view/pages/profile.dart';
+import '../view/widgets/assets.dart';
 
 List<AppModel> marketData = [
   AppModel(

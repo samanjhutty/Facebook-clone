@@ -1,9 +1,9 @@
 import 'dart:math';
 import 'dart:ui';
-import 'package:facebook/assets/assets.dart';
 import 'package:facebook/assets/image_path.dart';
 import 'package:facebook/assets/strings.dart';
 import 'package:facebook/view/pages/profile.dart';
+import '../view/widgets/assets.dart';
 
 class NotificationModel {
   final String avatarImage;

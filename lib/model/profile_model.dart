@@ -1,9 +1,9 @@
 import 'dart:math';
-import 'package:facebook/assets/assets.dart';
 import 'package:facebook/assets/image_path.dart';
 import 'package:facebook/assets/strings.dart';
 import 'package:facebook/view/pages/profile.dart';
 import 'package:flutter/animation.dart';
+import '../view/widgets/assets.dart';
 
 class ProfileModel {
   final String avatarImage;

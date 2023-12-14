@@ -57,7 +57,7 @@ class SignInAuth with ChangeNotifier {
     try {
       final GoogleSignIn googleSignInID = GoogleSignIn(
           clientId:
-              '226438241533-45d1a9rkmihcvgjf3d9ol9c04h54669u.apps.googleusercontent.com');
+              '837819833458-6mn2a5br0aun955eqchgdak816qmppmu.apps.googleusercontent.com');
 
       if (kIsWeb) {
         GoogleAuthProvider authProvider = GoogleAuthProvider();
@@ -112,7 +112,7 @@ class SignInAuth with ChangeNotifier {
           {
             final GoogleSignIn googleSignInID = GoogleSignIn(
                 clientId:
-                    '226438241533-45d1a9rkmihcvgjf3d9ol9c04h54669u.apps.googleusercontent.com');
+                    '837819833458-6mn2a5br0aun955eqchgdak816qmppmu.apps.googleusercontent.com');
             if (kIsWeb) {
               GoogleAuthProvider authProvider = GoogleAuthProvider();
               await auth.currentUser!.reauthenticateWithPopup(authProvider);

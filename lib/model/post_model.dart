@@ -2,9 +2,9 @@ import 'dart:core';
 import 'dart:math';
 import 'dart:ui';
 import 'package:facebook/assets/Image_path.dart';
-import 'package:facebook/assets/assets.dart';
 import 'package:facebook/assets/strings.dart';
 import 'package:facebook/view/pages/profile.dart';
+import '../view/widgets/assets.dart';
 
 class PostModel {
   final String avatarImage;

@@ -1,8 +1,8 @@
-import 'package:facebook/assets/assets.dart';
 import 'package:facebook/assets/dimens.dart';
 import 'package:facebook/assets/strings.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+import '../widgets/assets.dart';
 
 class VideosTab extends StatefulWidget {
   const VideosTab({super.key});

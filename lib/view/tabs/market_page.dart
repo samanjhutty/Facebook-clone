@@ -1,8 +1,8 @@
-import 'package:facebook/assets/assets.dart';
 import 'package:facebook/assets/dimens.dart';
 import 'package:facebook/assets/strings.dart';
 import 'package:facebook/model/market_model.dart';
 import 'package:flutter/material.dart';
+import '../widgets/assets.dart';
 
 class MarketTab extends StatefulWidget {
   const MarketTab({super.key});

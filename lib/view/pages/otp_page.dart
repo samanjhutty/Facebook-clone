@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:otp_text_field/otp_field.dart';
 import 'package:otp_text_field/style.dart';
 import 'package:provider/provider.dart';
-import '../../assets/mywidgets.dart';
 import '../../controller/signup_controller.dart';
+import '../widgets/mywidgets.dart';
 
 class OTPPage extends StatefulWidget {
-  const OTPPage({Key? key}) : super(key: key);
+  const OTPPage({super.key});
 
   final String title = 'OTP Page';
   @override

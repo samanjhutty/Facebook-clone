@@ -1,9 +1,9 @@
-import 'package:facebook/assets/assets.dart';
 import 'package:facebook/assets/dimens.dart';
 import 'package:facebook/assets/strings.dart';
 import 'package:facebook/model/profile_model.dart';
 import 'package:facebook/view/pages/profile.dart';
 import 'package:flutter/material.dart';
+import '../widgets/assets.dart';
 
 class FriendsTab extends StatefulWidget {
   const FriendsTab({super.key});

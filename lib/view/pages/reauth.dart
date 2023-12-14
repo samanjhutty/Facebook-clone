@@ -2,8 +2,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-import '../../assets/mywidgets.dart';
 import '../../controller/signin_controller.dart';
+import '../widgets/mywidgets.dart';
 
 class ReAuthenticate extends StatefulWidget {
   const ReAuthenticate({super.key});

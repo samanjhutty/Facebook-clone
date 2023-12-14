@@ -1,4 +1,3 @@
-import 'package:facebook/assets/assets.dart';
 import 'package:facebook/assets/dimens.dart';
 import 'package:facebook/assets/strings.dart';
 import 'package:facebook/assets/theme.dart';
@@ -15,17 +14,18 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 import 'package:tab_indicator_styler/tab_indicator_styler.dart';
-import 'assets/mywidgets.dart';
 import 'controller/firebase_options.dart';
 import 'controller/profile_controller.dart';
 import 'controller/signin_controller.dart';
 import 'controller/signup_controller.dart';
+import 'view/pages/mobile_login.dart';
+import 'view/pages/otp_page.dart';
+import 'view/pages/reauth.dart';
 import 'view/pages/signin.dart';
 import 'view/pages/signup.dart';
-import 'view/widgets/mobile_login.dart';
-import 'view/widgets/otp_page.dart';
-import 'view/widgets/reauth.dart';
-import 'view/widgets/update_profile.dart';
+import 'view/pages/update_profile.dart';
+import 'view/widgets/assets.dart';
+import 'view/widgets/mywidgets.dart';
 
 void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();

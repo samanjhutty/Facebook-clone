@@ -1,9 +1,9 @@
-import 'package:facebook/assets/assets.dart';
 import 'package:facebook/assets/dimens.dart';
 import 'package:facebook/assets/image_path.dart';
 import 'package:facebook/assets/theme.dart';
 import 'package:facebook/view/widgets/posts.dart';
 import 'package:flutter/material.dart';
+import '../widgets/assets.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
