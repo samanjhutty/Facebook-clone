@@ -1,7 +1,6 @@
 import 'package:expandable_text/expandable_text.dart';
 import 'package:facebook/assets/dimens.dart';
 import 'package:facebook/assets/strings.dart';
-import 'package:facebook/assets/theme.dart';
 import 'package:facebook/model/post_model.dart';
 import 'package:flutter/material.dart';
 import 'assets.dart';
@@ -16,6 +15,8 @@ class Posts extends StatefulWidget {
 class _PostsState extends State<Posts> {
   @override
   Widget build(BuildContext context) {
+    final ColorScheme scheme = Theme.of(context).colorScheme;
+
     return Column(
       children: [
         for (int i = 0; i < postsData.length; i++) ...[
@@ -26,11 +27,12 @@ class _PostsState extends State<Posts> {
                     backgroundImage: AssetImage(postsData[i].avatarImage)),
                 onPressed: postsData[i].profileOnTap),
             title: TextButton(
-                style: const ButtonStyle(
-                    padding: MaterialStatePropertyAll(EdgeInsets.zero),
+                style: ButtonStyle(
+                    foregroundColor: MaterialStatePropertyAll(scheme.onSurface),
+                    padding: const MaterialStatePropertyAll(EdgeInsets.zero),
                     alignment: Alignment.centerLeft,
-                    foregroundColor: MaterialStatePropertyAll(Themes.fontColor),
-                    overlayColor: MaterialStatePropertyAll(Colors.transparent)),
+                    overlayColor:
+                        const MaterialStatePropertyAll(Colors.transparent)),
                 onPressed: postsData[i].profileOnTap,
                 child: Text(postsData[i].username)),
             subtitle: Wrap(spacing: Dimens.margin, children: [
@@ -52,11 +54,6 @@ class _PostsState extends State<Posts> {
                     style: TextStyle(color: Colors.grey[600])),
               ])
             ]),
-            trailing: IconButton(
-              splashRadius: Dimens.iconSplashRadius,
-              onPressed: postsData[i].moreOnTap,
-              icon: const Icon(Icons.more_horiz),
-            ),
           ),
           Container(
               margin: const EdgeInsets.all(Dimens.margin),
@@ -81,23 +78,17 @@ class _PostsState extends State<Posts> {
                 alignment: WrapAlignment.spaceEvenly,
                 children: [
                   TextButton.icon(
-                      style: textBtnStyle(
-                          border: Dimens.circularRadius,
-                          color: Themes.defaultIconColor),
+                      style: textBtnStyle(border: Dimens.circularRadius),
                       onPressed: postsData[i].likeOnTap,
                       icon: const Icon(Icons.thumb_up_outlined),
                       label: const Text(Strings.like)),
                   TextButton.icon(
-                      style: textBtnStyle(
-                          border: Dimens.circularRadius,
-                          color: Themes.defaultIconColor),
+                      style: textBtnStyle(border: Dimens.circularRadius),
                       onPressed: postsData[i].commentOnTap,
                       icon: const Icon(Icons.comment_outlined),
                       label: const Text(Strings.comment)),
                   TextButton.icon(
-                      style: textBtnStyle(
-                          border: Dimens.circularRadius,
-                          color: Themes.defaultIconColor),
+                      style: textBtnStyle(border: Dimens.circularRadius),
                       onPressed: postsData[i].shareOnTap,
                       icon: const Icon(Icons.share_outlined),
                       label: const Text(Strings.share)),

@@ -1,8 +1,7 @@
-import 'package:facebook/assets/Image_path.dart';
 import 'package:facebook/assets/dimens.dart';
 import 'package:facebook/assets/strings.dart';
-import 'package:facebook/assets/theme.dart';
 import 'package:facebook/model/story_model.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'assets.dart';
 
@@ -14,11 +13,15 @@ class StoryBar extends StatefulWidget {
 }
 
 class _StoryBarState extends State<StoryBar> {
-  double myHeight = 160;
-  double myWidth = 120;
+  User? user = FirebaseAuth.instance.currentUser;
 
   @override
   Widget build(BuildContext context) {
+    final ColorScheme scheme = Theme.of(context).colorScheme;
+    Size device = MediaQuery.of(context).size;
+    double myHeight = device.height * 0.25;
+    double myWidth = myHeight * 0.75;
+
     return SingleChildScrollView(
         scrollDirection: Axis.horizontal,
         child: Wrap(
@@ -31,37 +34,40 @@ class _StoryBarState extends State<StoryBar> {
                   height: myHeight,
                   width: myWidth,
                   decoration: BoxDecoration(
-                      color: Themes.layoutBackgroundLight,
+                      border: Border.all(
+                          width: 2,
+                          color: scheme.onBackground.withOpacity(0.1)),
                       borderRadius: const BorderRadius.all(
                           Radius.circular(Dimens.borderRadius))),
                   child: Stack(children: [
-                    ClipRRect(
-                        borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(Dimens.borderRadius),
-                            topRight: Radius.circular(Dimens.borderRadius)),
-                        child: Image.asset(
-                          ImagePath.myImage,
-                          fit: BoxFit.fitHeight,
-                          height: myHeight * 0.65,
-                        )),
+                    SizedBox(
+                      height: myHeight * 0.65,
+                      child: ClipRRect(
+                          borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(Dimens.borderRadius),
+                              topRight: Radius.circular(Dimens.borderRadius)),
+                          child: Image.network(
+                            user!.photoURL!,
+                            fit: BoxFit.cover,
+                            height: double.infinity,
+                            width: double.infinity,
+                          )),
+                    ),
                     Center(
                         child: Container(
                       margin: EdgeInsets.only(top: myHeight * 0.35),
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Themes.layoutBackgroundLight),
-                      child: Container(
-                          padding: const EdgeInsets.all(Dimens.minMargin),
-                          decoration: BoxDecoration(
-                              color: Themes.layoutBackgroundLight,
-                              shape: BoxShape.circle),
-                          child: CircleAvatar(
-                            radius: Dimens.borderRadius,
-                            backgroundColor:
-                                Theme.of(context).colorScheme.primary,
-                            child: const Icon(
-                              Icons.add_rounded,
-                              color: Colors.white,
+                      decoration: const BoxDecoration(shape: BoxShape.circle),
+                      child: CircleAvatar(
+                          backgroundColor: scheme.background,
+                          child: const Padding(
+                            padding: EdgeInsets.all(Dimens.minMargin),
+                            child: CircleAvatar(
+                              radius: Dimens.borderRadius,
+                              backgroundColor: Colors.grey,
+                              child: Icon(
+                                Icons.add_rounded,
+                                color: Colors.white,
+                              ),
                             ),
                           )),
                     )),
@@ -81,9 +87,8 @@ class _StoryBarState extends State<StoryBar> {
                   child: Container(
                     height: myHeight,
                     width: myWidth,
-                    decoration: BoxDecoration(
-                        color: Themes.layoutBackgroundLight,
-                        borderRadius: const BorderRadius.all(
+                    decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(
                             Radius.circular(Dimens.borderRadius))),
                     child: Stack(children: [
                       ClipRRect(
@@ -108,8 +113,8 @@ class _StoryBarState extends State<StoryBar> {
                               storyData[i].userName,
                               softWrap: false,
                               overflow: TextOverflow.fade,
-                              style: const TextStyle(
-                                color: Colors.white70,
+                              style: TextStyle(
+                                color: scheme.onSurface,
                               ),
                             )),
                       )

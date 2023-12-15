@@ -14,7 +14,6 @@ class FriendsTab extends StatefulWidget {
 class _FriendsTabState extends State<FriendsTab> {
   @override
   Widget build(BuildContext context) {
-    double myWidth = MediaQuery.of(context).size.width;
     final ColorScheme scheme = Theme.of(context).colorScheme;
 
     return SafeArea(
@@ -29,87 +28,101 @@ class _FriendsTabState extends State<FriendsTab> {
             const Divider(thickness: 1),
             const Text(Strings.friendReq),
             Expanded(
-              child: ListView(
-                  padding: const EdgeInsets.only(bottom: Dimens.margin),
-                  children: [
-                    for (int i = 0; i < profileData.length; i++) ...[
-                      Padding(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: Dimens.minMargin),
-                          child: Row(children: [
-                            iconBtn(
-                                onPressed: () =>
-                                    gotoPage(page: const Profile()),
-                                iconSize: myWidth * 0.15,
-                                icon: CircleAvatar(
-                                  radius: myWidth * 0.15,
-                                  backgroundImage:
-                                      AssetImage(profileData[i].avatarImage),
-                                )),
-                            Expanded(
-                              child: Padding(
-                                padding:
-                                    const EdgeInsets.only(left: Dimens.margin),
-                                child: SizedBox(
-                                  height: myWidth * 0.25,
+              child: SizedBox(
+                width:
+                    MediaQuery.of(context).orientation == Orientation.landscape
+                        ? 470
+                        : double.infinity,
+                child: ListView(
+                    padding: const EdgeInsets.only(bottom: Dimens.margin),
+                    children: [
+                      for (int i = 0; i < profileData.length; i++) ...[
+                        SizedBox(
+                          height: 100,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                vertical: Dimens.minMargin),
+                            child: Row(children: [
+                              iconBtn(
+                                  onPressed: () =>
+                                      gotoPage(page: const Profile()),
+                                  icon: CircleAvatar(
+                                    radius: 50,
+                                    backgroundImage:
+                                        AssetImage(profileData[i].avatarImage),
+                                  )),
+                              Expanded(
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: Dimens.margin),
                                   child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       mainAxisAlignment:
                                           MainAxisAlignment.spaceBetween,
                                       children: [
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: Dimens.margin),
-                                          child: Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Text(profileData[i].username),
-                                                iconBtn(
-                                                    splashRadius:
-                                                        Dimens.miniSplashRadius,
-                                                    onPressed: () {},
-                                                    icon: const Icon(
-                                                        Icons.more_horiz))
-                                              ]),
+                                        Expanded(
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: Dimens.margin),
+                                            child: Row(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Text(profileData[i].username),
+                                                ]),
+                                          ),
                                         ),
                                         Row(children: [
                                           Expanded(
-                                              child: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: Dimens.minMargin),
-                                            child: TextButton(
-                                                style: textBtnStyle(
-                                                    border:
-                                                        Dimens.miniBorderRadius,
-                                                    color: scheme.primary),
-                                                onPressed:
-                                                    profileData[i].confirmReq,
-                                                child: const Text(
-                                                    Strings.confirm)),
-                                          )),
+                                            child: Padding(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal:
+                                                            Dimens.minMargin),
+                                                child: TextButton(
+                                                    style: textBtnStyle(
+                                                        border: Dimens
+                                                            .miniBorderRadius,
+                                                        color: scheme
+                                                            .primaryContainer),
+                                                    onPressed: profileData[i]
+                                                        .confirmReq,
+                                                    child: const Text(
+                                                        Strings.confirm))),
+                                          ),
                                           Expanded(
-                                              child: Padding(
-                                            padding: const EdgeInsets.symmetric(
-                                                horizontal: Dimens.minMargin),
-                                            child: TextButton(
-                                              style: textBtnStyle(
-                                                  color: scheme.primary,
-                                                  border:
-                                                      Dimens.miniBorderRadius),
-                                              onPressed:
-                                                  profileData[i].deleteReq,
-                                              child: const Text(Strings.delete),
+                                            child: Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal:
+                                                          Dimens.minMargin),
+                                              child: TextButton(
+                                                style: textBtnStyle(
+                                                    color:
+                                                        scheme.primaryContainer,
+                                                    border: Dimens
+                                                        .miniBorderRadius),
+                                                onPressed:
+                                                    profileData[i].deleteReq,
+                                                child:
+                                                    const Text(Strings.delete),
+                                              ),
                                             ),
-                                          ))
+                                          )
                                         ])
                                       ]),
                                 ),
-                              ),
-                            )
-                          ]))
-                    ]
-                  ]),
+                              )
+                            ]),
+                          ),
+                        )
+                      ]
+                    ]),
+              ),
             ),
           ])),
     );

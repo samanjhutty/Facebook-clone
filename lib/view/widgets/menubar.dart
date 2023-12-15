@@ -1,6 +1,5 @@
 import 'package:facebook/assets/dimens.dart';
 import 'package:facebook/assets/strings.dart';
-import 'package:facebook/assets/theme.dart';
 import 'package:flutter/material.dart';
 
 class MyMenuBar extends StatefulWidget {
@@ -13,16 +12,18 @@ class MyMenuBar extends StatefulWidget {
 class _MenuBarState extends State<MyMenuBar> {
   @override
   Widget build(BuildContext context) {
+    final ColorScheme scheme = Theme.of(context).colorScheme;
     return Wrap(
       alignment: WrapAlignment.spaceEvenly,
       crossAxisAlignment: WrapCrossAlignment.center,
       children: [
         TextButton(
-            style: const ButtonStyle(
+            style: ButtonStyle(
+                iconColor: MaterialStatePropertyAll(scheme.primary),
+                foregroundColor: MaterialStatePropertyAll(scheme.onSurface),
                 alignment: Alignment.center,
-                overlayColor: MaterialStatePropertyAll(Colors.transparent),
-                foregroundColor:
-                    MaterialStatePropertyAll(Themes.defaultIconColor)),
+                overlayColor:
+                    const MaterialStatePropertyAll(Colors.transparent)),
             onPressed: () {},
             child: const Wrap(
               crossAxisAlignment: WrapCrossAlignment.center,
@@ -32,11 +33,12 @@ class _MenuBarState extends State<MyMenuBar> {
         const SizedBox(
             height: Dimens.xMargin, child: VerticalDivider(thickness: 1)),
         TextButton(
-            style: const ButtonStyle(
+            style: ButtonStyle(
+                iconColor: MaterialStatePropertyAll(scheme.primary),
+                foregroundColor: MaterialStatePropertyAll(scheme.onSurface),
                 alignment: Alignment.center,
-                overlayColor: MaterialStatePropertyAll(Colors.transparent),
-                foregroundColor:
-                    MaterialStatePropertyAll(Themes.defaultIconColor)),
+                overlayColor:
+                    const MaterialStatePropertyAll(Colors.transparent)),
             onPressed: () {},
             child: const Wrap(
               crossAxisAlignment: WrapCrossAlignment.center,
@@ -49,11 +51,12 @@ class _MenuBarState extends State<MyMenuBar> {
         const SizedBox(
             height: Dimens.xMargin, child: VerticalDivider(thickness: 1)),
         TextButton(
-            style: const ButtonStyle(
+            style: ButtonStyle(
+                iconColor: MaterialStatePropertyAll(scheme.primary),
+                foregroundColor: MaterialStatePropertyAll(scheme.onSurface),
                 alignment: Alignment.center,
-                overlayColor: MaterialStatePropertyAll(Colors.transparent),
-                foregroundColor:
-                    MaterialStatePropertyAll(Themes.defaultIconColor)),
+                overlayColor:
+                    const MaterialStatePropertyAll(Colors.transparent)),
             onPressed: () {},
             child: const Wrap(
               crossAxisAlignment: WrapCrossAlignment.center,

@@ -26,9 +26,9 @@ class _MobileLoginState extends State<MobileLogin> {
   @override
   Widget build(BuildContext context) => Material(
         child: SafeArea(
-          child: Stack(children: [
-            AppBar(),
-            Center(
+          child: Scaffold(
+            appBar: AppBar(),
+            body: Center(
                 child: SingleChildScrollView(
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -87,8 +87,8 @@ class _MobileLoginState extends State<MobileLogin> {
                                   child: const Text('Sign In'))
                             ]))
                   ]),
-            ))
-          ]),
+            )),
+          ),
         ),
       );
 }

@@ -77,7 +77,7 @@ class SignUpAuth extends ChangeNotifier {
       notifyListeners();
 
       _auth.currentUser!.displayName == null
-          ? Get.toNamed('/profile')
+          ? Get.toNamed('/update-profile')
           : Get.until(ModalRoute.withName('/'));
     } on FirebaseAuthException catch (e) {
       if (e.code == 'invalid-verification-code') {

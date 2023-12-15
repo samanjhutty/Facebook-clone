@@ -1,6 +1,5 @@
 import 'package:facebook/assets/dimens.dart';
 import 'package:facebook/assets/strings.dart';
-import 'package:facebook/assets/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,6 +8,13 @@ showSnackbar({required String message}) async {
   Get.closeAllSnackbars();
   Get.rawSnackbar(message: message);
 }
+
+goBack() => Padding(
+      padding: const EdgeInsets.all(16),
+      child: IconButton(
+          onPressed: () => Get.back(),
+          icon: const Icon(Icons.arrow_back_rounded)),
+    );
 
 gotoPage({required Widget page}) =>
     navigattorkey.currentState!.push(MaterialPageRoute(
@@ -53,15 +59,16 @@ cardView(
 
 textBtnStyle(
         {required double border,
-        required Color? color,
+        // ignore: avoid_init_to_null
+        Color? color = null,
         AlignmentGeometry? alignment = Alignment.center}) =>
     TextButton.styleFrom(
-        alignment: alignment,
-        backgroundColor: Themes.layoutBackgroundLight,
-        padding: const EdgeInsets.all(Dimens.xMargin),
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(border))),
-        foregroundColor: color);
+      alignment: alignment,
+      padding: const EdgeInsets.all(Dimens.xMargin),
+      backgroundColor: color,
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(border))),
+    );
 iconBtn(
         {required VoidCallback onPressed,
         required Widget icon,
@@ -91,7 +98,7 @@ pageHeader(
               style: const TextStyle(
                   fontWeight: FontWeight.bold, fontSize: Dimens.titleLarge),
             ),
-            Icon(icon, color: Themes.defaultIconColor)
+            Icon(icon)
           ]),
       iconBtn(
           tooltip: Strings.search,

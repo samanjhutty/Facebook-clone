@@ -55,6 +55,7 @@ class SignInAuth with ChangeNotifier {
 
   Future<void> googleLogin() async {
     try {
+      Get.rawSnackbar(message: 'Please wait before retrying');
       final GoogleSignIn googleSignInID = GoogleSignIn(
           clientId:
               '837819833458-6mn2a5br0aun955eqchgdak816qmppmu.apps.googleusercontent.com');

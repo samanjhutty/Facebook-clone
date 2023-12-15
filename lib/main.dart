@@ -1,7 +1,8 @@
 import 'package:facebook/assets/dimens.dart';
 import 'package:facebook/assets/strings.dart';
-import 'package:facebook/assets/theme.dart';
 import 'package:facebook/view/pages/drawer.dart';
+import 'package:facebook/view/pages/notifications.dart';
+import 'package:facebook/view/pages/profile.dart';
 import 'package:facebook/view/tabs/friends_page.dart';
 import 'package:facebook/view/tabs/home_page.dart';
 import 'package:facebook/view/tabs/market_page.dart';
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     FirebaseAuth auth = FirebaseAuth.instance;
+    Color themeColor = Colors.deepPurple;
     return MultiProvider(
         providers: [
           ChangeNotifierProvider(create: (context) => ProfileController()),
@@ -49,28 +51,34 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (context) => MyWidgets())
         ],
         child: GetMaterialApp(
-            initialRoute: auth.currentUser == null ? '/signin' : '/',
+            initialRoute: '/',
             routes: {
-              '/': (p0) => const MyMainTab(),
+              '/': (p0) =>
+                  auth.currentUser == null ? const SignIn() : const MyMainTab(),
               '/mobile': (p0) => const MobileLogin(),
               '/otppage': (p0) => const OTPPage(),
-              '/profile': (p0) => const UpdateProfile(),
+              '/update-profile': (p0) => const UpdateProfile(),
               '/signin': (p0) => const SignIn(),
               '/signup': (p0) => const SignUp(),
-              '/reauth': (p0) => const ReAuthenticate()
+              '/reauth': (p0) => const ReAuthenticate(),
+              '/drawer': (p0) => const MyDrawer(),
+              '/notifications': (p0) => const Notifications(),
+              '/friends': (p0) => const FriendsTab(),
+              '/market': (p0) => const MarketTab(),
+              '/messages': (p0) => const MessagesTab(),
+              '/videos': (p0) => const VideosTab(),
+              '/profile': (p0) => const Profile()
             },
             title: 'Facebook',
             theme: ThemeData(
                 colorScheme: ColorScheme.fromSeed(
-                    seedColor: Themes.primaryColor,
-                    brightness: Brightness.light),
+                    seedColor: themeColor, brightness: Brightness.light),
                 useMaterial3: true),
             darkTheme: ThemeData(
                 colorScheme: ColorScheme.fromSeed(
-                    seedColor: Themes.primaryColor,
-                    brightness: Brightness.dark),
+                    seedColor: themeColor, brightness: Brightness.dark),
                 useMaterial3: true),
-            themeMode: ThemeMode.system,
+            themeMode: ThemeMode.dark,
             debugShowCheckedModeBanner: false,
             navigatorKey: navigattorkey));
   }
@@ -118,6 +126,7 @@ class _MyMainTabState extends State<MyMainTab> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    ColorScheme scheme = Theme.of(context).colorScheme;
     return WillPopScope(
         onWillPop: _onWillPop,
         child: Scaffold(
@@ -139,95 +148,12 @@ class _MyMainTabState extends State<MyMainTab> with TickerProviderStateMixin {
                     _scaffoldKey.currentState?.openEndDrawer();
                   },
                   icon: const Icon(Icons.menu)),
-              Consumer<SignInAuth>(builder: (context, value, child) {
-                var user = FirebaseAuth.instance.currentUser;
-                return user != null
-                    ? PopupMenuButton(
-                        onOpened: () => value.refresh(),
-                        position: PopupMenuPosition.under,
-                        padding: EdgeInsets.zero,
-                        child: CircleAvatar(
-                            child: user.photoURL == null
-                                ? const Icon(Icons.person)
-                                : ClipRRect(
-                                    borderRadius: BorderRadius.circular(20),
-                                    child: Image.network(
-                                        user.photoURL.toString(),
-                                        height: double.infinity,
-                                        width: double.infinity,
-                                        fit: BoxFit.cover),
-                                  )),
-                        itemBuilder: (BuildContext context) => <PopupMenuEntry>[
-                              PopupMenuItem(
-                                  onTap: () => Get.toNamed('/profile'),
-                                  child: ListTile(
-                                    leading: CircleAvatar(
-                                        child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(20),
-                                      child: user.photoURL == null
-                                          ? const Icon(Icons.person)
-                                          : Image.network(
-                                              user.photoURL.toString(),
-                                              height: double.infinity,
-                                              width: double.infinity,
-                                              fit: BoxFit.cover),
-                                    )),
-                                    title: Text(
-                                        user.photoURL == null
-                                            ? 'Username'
-                                            : user.displayName!,
-                                        style: const TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 18)),
-                                    subtitle: const Text('Tap to Change',
-                                        style: TextStyle(fontSize: 12)),
-                                  )),
-                              PopupMenuItem(
-                                  onTap: () async => await value.logout(),
-                                  child: const Row(children: [
-                                    Icon(Icons.logout_rounded),
-                                    SizedBox(width: 8),
-                                    Text('Logout')
-                                  ])),
-                              PopupMenuItem(
-                                  onTap: () async {
-                                    final authrovider = FirebaseAuth
-                                        .instance
-                                        .currentUser!
-                                        .providerData[0]
-                                        .providerId;
-                                    if (authrovider == 'password') {
-                                      Get.toNamed('/reauth');
-                                    } else if (authrovider == 'phone') {
-                                      Get.rawSnackbar(
-                                          message:
-                                              'Please wait for a few seconds');
-                                      await value.sendOTP();
-                                    } else {
-                                      Get.rawSnackbar(
-                                          message:
-                                              'Please wait for a few seconds');
-                                      await value.reauth();
-                                    }
-                                  },
-                                  child: const Row(children: [
-                                    Icon(Icons.delete_forever_rounded,
-                                        color: Colors.red),
-                                    SizedBox(width: 8),
-                                    Text('Delete Account')
-                                  ]))
-                            ])
-                    : TextButton.icon(
-                        onPressed: () => Get.toNamed('/signin'),
-                        label: const Text('Sign In'),
-                        icon: const Icon(Icons.login_rounded));
-              }),
               const SizedBox(width: 16)
             ],
             bottom: TabBar(
                 indicatorSize: TabBarIndicatorSize.tab,
                 indicator: RectangularIndicator(
-                    color: Themes.primaryColor,
+                    color: scheme.primary,
                     topLeftRadius: Dimens.circularRadius,
                     topRightRadius: Dimens.circularRadius,
                     bottomLeftRadius: Dimens.circularRadius,
@@ -238,8 +164,7 @@ class _MyMainTabState extends State<MyMainTab> with TickerProviderStateMixin {
                 controller: _tabController,
                 overlayColor:
                     const MaterialStatePropertyAll(Colors.transparent),
-                labelColor: Colors.white,
-                unselectedLabelColor: Themes.iconDisabled),
+                labelColor: Colors.white),
           ),
           endDrawer: const MyDrawer(),
           body: TabBarView(
