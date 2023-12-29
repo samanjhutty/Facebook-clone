@@ -24,8 +24,7 @@ class SignUpAuth extends ChangeNotifier {
     await profile.updateProfile();
     notifyListeners();
     Get.rawSnackbar(message: 'Account created sucessfully');
-    Get.until(ModalRoute.withName('/'));
-
+    Get.offAllNamed('/');
     emailAddress.clear();
     password.clear();
     username.clear();
@@ -78,7 +77,7 @@ class SignUpAuth extends ChangeNotifier {
 
       _auth.currentUser!.displayName == null
           ? Get.toNamed('/update-profile')
-          : Get.until(ModalRoute.withName('/'));
+          : Get.offAllNamed('/');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'invalid-verification-code') {
         Get.rawSnackbar(message: 'Invalid code');

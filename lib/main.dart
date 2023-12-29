@@ -69,7 +69,7 @@ class MyApp extends StatelessWidget {
               '/videos': (p0) => const VideosTab(),
               '/profile': (p0) => const Profile()
             },
-            title: 'Facebook',
+            title: Strings.appName,
             theme: ThemeData(
                 colorScheme: ColorScheme.fromSeed(
                     seedColor: themeColor, brightness: Brightness.light),
@@ -78,7 +78,7 @@ class MyApp extends StatelessWidget {
                 colorScheme: ColorScheme.fromSeed(
                     seedColor: themeColor, brightness: Brightness.dark),
                 useMaterial3: true),
-            themeMode: ThemeMode.dark,
+            themeMode: ThemeMode.system,
             debugShowCheckedModeBanner: false,
             navigatorKey: navigattorkey));
   }
@@ -87,7 +87,7 @@ class MyApp extends StatelessWidget {
 class MyMainTab extends StatefulWidget {
   const MyMainTab({super.key});
 
-  final String title = 'Facebook';
+  final String title = Strings.appName;
   @override
   State<MyMainTab> createState() => _MyMainTabState();
 }

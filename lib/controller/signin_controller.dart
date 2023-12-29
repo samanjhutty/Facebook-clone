@@ -22,6 +22,7 @@ class SignInAuth with ChangeNotifier {
   Future<void> logout() async {
     await auth.signOut();
     notifyListeners();
+    Get.offAllNamed('/');
     Get.rawSnackbar(message: 'Logged out Sucessfully');
   }
 
@@ -39,7 +40,7 @@ class SignInAuth with ChangeNotifier {
 
       Get.rawSnackbar(message: 'Logged in Sucessfully');
       notifyListeners();
-      Get.until(ModalRoute.withName('/'));
+      Get.offAllNamed('/');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         Get.rawSnackbar(message: 'No user found for that email.');
@@ -55,7 +56,7 @@ class SignInAuth with ChangeNotifier {
 
   Future<void> googleLogin() async {
     try {
-      Get.rawSnackbar(message: 'Please wait before retrying');
+      Get.rawSnackbar(message: 'Please wait...');
       final GoogleSignIn googleSignInID = GoogleSignIn(
           clientId:
               '837819833458-6mn2a5br0aun955eqchgdak816qmppmu.apps.googleusercontent.com');
@@ -75,10 +76,10 @@ class SignInAuth with ChangeNotifier {
         await auth.signInWithCredential(credential);
         notifyListeners();
       }
-      Get.back();
+      Get.offAllNamed('/');
       Get.rawSnackbar(message: 'Logged in via Google');
     } on FirebaseAuthException {
-      Get.until(ModalRoute.withName('/'));
+      Get.offAll(ModalRoute.withName('/'));
       Get.rawSnackbar(message: 'Something went Wrong, try again!');
     }
   }
@@ -157,13 +158,14 @@ class SignInAuth with ChangeNotifier {
         default:
           Get.rawSnackbar(message: 'Provider is Unknown');
       }
-      storage.Reference refRoot = fbStorage.ref().child('USER-profileImage');
+      storage.Reference refRoot = fbStorage.ref().child('USER-profileData');
       storage.Reference ref =
           refRoot.child('profileImage${auth.currentUser!.uid}.jpg');
 
       await ref.delete();
       await auth.currentUser!.delete();
       notifyListeners();
+      Get.offAllNamed('/');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'invalid-verification-code') {
         Get.rawSnackbar(message: 'Invalid code, try again');
@@ -175,6 +177,5 @@ class SignInAuth with ChangeNotifier {
         Get.rawSnackbar(message: 'Too many requests, try after sometime');
       }
     }
-    Get.until(ModalRoute.withName('/'));
   }
 }

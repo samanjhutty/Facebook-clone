@@ -24,9 +24,11 @@ class _PostbarState extends State<Postbar> {
           tooltip: Strings.profileTip,
           padding: const EdgeInsets.all(Dimens.minMargin),
           onPressed: () => gotoPage(page: const Profile()),
-          icon: CircleAvatar(
-            backgroundImage: NetworkImage(user!.photoURL!),
-          )),
+          icon: user!.photoURL == null
+              ? const CircleAvatar(child: Icon(Icons.person))
+              : CircleAvatar(
+                  backgroundImage: NetworkImage(user.photoURL!),
+                )),
       title: Container(
         margin: const EdgeInsets.symmetric(horizontal: Dimens.minMargin),
         child: TextButton(

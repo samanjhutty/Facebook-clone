@@ -46,12 +46,18 @@ class _StoryBarState extends State<StoryBar> {
                           borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(Dimens.borderRadius),
                               topRight: Radius.circular(Dimens.borderRadius)),
-                          child: Image.network(
-                            user!.photoURL!,
-                            fit: BoxFit.cover,
-                            height: double.infinity,
-                            width: double.infinity,
-                          )),
+                          child: user!.photoURL == null
+                              ? Container(
+                                  height: double.infinity,
+                                  width: double.infinity,
+                                  color: scheme.primary,
+                                  child: const Icon(Icons.person))
+                              : Image.network(
+                                  user!.photoURL!,
+                                  fit: BoxFit.cover,
+                                  height: double.infinity,
+                                  width: double.infinity,
+                                )),
                     ),
                     Center(
                         child: Container(

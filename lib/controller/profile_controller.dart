@@ -1,14 +1,12 @@
 import 'dart:io';
+import 'package:facebook/view/widgets/assets.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart' as storage;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../view/widgets/mywidgets.dart';
 
 class ProfileController with ChangeNotifier {
-  MyWidgets widgets = Get.put(MyWidgets());
   TextEditingController username = TextEditingController();
   FilePickerResult? pickedfile;
   Uint8List? webImage;
@@ -23,7 +21,7 @@ class ProfileController with ChangeNotifier {
           : image = File(pickedfile!.files.single.path!);
       notifyListeners();
     } else {
-      widgets.mySnackbar('No Image selected');
+      showSnackbar(message: 'No Image selected');
     }
   }
 
@@ -33,28 +31,28 @@ class ProfileController with ChangeNotifier {
     if (image != null || webImage != null) {
       try {
         storage.FirebaseStorage fbStorage = storage.FirebaseStorage.instance;
-        storage.Reference refRoot = fbStorage.ref().child('USER-profileImage');
+        storage.Reference refRoot = fbStorage.ref().child('USER-profileData');
         storage.Reference ref = refRoot.child('profileImage${_user!.uid}.jpg');
 
         if (pickedfile != null) {
-          widgets.mySnackbar('uploading...');
+          showSnackbar(message: 'uploading...');
           kIsWeb
               ? await ref.putData(pickedfile!.files.single.bytes!)
               : await ref.putFile(File(pickedfile!.files.single.path!));
           String imageURL = await ref.getDownloadURL();
           await _user!.updatePhotoURL(imageURL);
         } else {
-          widgets.mySnackbar('No Image Selected!');
+          showSnackbar(message: 'No Image Selected!');
         }
       } on FirebaseException {
-        widgets.mySnackbar('Firebase error occured!');
+        showSnackbar(message: 'Firebase error occured!');
       } catch (e) {
-        widgets.mySnackbar('something unexpected occured!');
+        showSnackbar(message: 'something unexpected occured!');
       }
     }
     await _user!.updateDisplayName(username.text);
     notifyListeners();
-    widgets.mySnackbar('Profile Updated');
+    showSnackbar(message: 'Profile Updated');
   }
 
   myAnimation({String title = 'Next', bool progress = false}) {

@@ -52,12 +52,17 @@ class _ProfileState extends State<Profile> {
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(
                                       Dimens.circularRadius)),
-                              child: CircleAvatar(
-                                  backgroundColor: Colors.white,
-                                  radius: 80,
-                                  backgroundImage: NetworkImage(
-                                    auth.currentUser!.photoURL!,
-                                  )),
+                              child: auth.currentUser!.photoURL == null
+                                  ? const CircleAvatar(
+                                      radius: 80,
+                                      child: Icon(Icons.person, size: 80),
+                                    )
+                                  : CircleAvatar(
+                                      backgroundColor: scheme.background,
+                                      radius: 80,
+                                      backgroundImage: NetworkImage(
+                                        auth.currentUser!.photoURL!,
+                                      )),
                             ))
                       ],
                     );
@@ -65,7 +70,10 @@ class _ProfileState extends State<Profile> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: Dimens.xMargin),
-                  child: Text(auth.currentUser!.displayName!,
+                  child: Text(
+                      auth.currentUser!.displayName == null
+                          ? 'Username'
+                          : auth.currentUser!.displayName!,
                       style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: Dimens.titleLarge)),
@@ -75,7 +83,9 @@ class _ProfileState extends State<Profile> {
                       child: Padding(
                     padding: const EdgeInsets.only(right: Dimens.margin),
                     child: TextButton.icon(
-                        style: textBtnStyle(border: 40, color: scheme.primary),
+                        style: textBtnStyle(
+                            border: 40,
+                            color: scheme.primaryContainer.withOpacity(0.1)),
                         onPressed: () {
                           var provider = context.read<ProfileController>();
                           provider.pickImage();
@@ -88,8 +98,9 @@ class _ProfileState extends State<Profile> {
                     child: Padding(
                       padding: const EdgeInsets.only(right: Dimens.margin),
                       child: TextButton.icon(
-                          style:
-                              textBtnStyle(border: 40, color: scheme.primary),
+                          style: textBtnStyle(
+                              border: 40,
+                              color: scheme.primaryContainer.withOpacity(0.1)),
                           onPressed: () => Get.toNamed('/update-profile'),
                           icon: const Icon(Icons.edit),
                           label: const Text('Edit Profile')),

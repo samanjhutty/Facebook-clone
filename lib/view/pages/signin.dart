@@ -135,28 +135,29 @@ class _SignInState extends State<SignIn> {
                     )),
                 const Text('Continue with',
                     style: TextStyle(color: Colors.grey, fontSize: 14)),
-                Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          CircleAvatar(
-                            child: IconButton(
-                                tooltip: 'Phone',
-                                onPressed: () =>
-                                    Navigator.pushNamed(context, '/mobile'),
-                                icon: const Icon(Icons.phone)),
-                          ),
-                          const SizedBox(width: 35),
-                          CircleAvatar(
+                Consumer<SignInAuth>(
+                  builder: (context, provider, child) => Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 16),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CircleAvatar(
                               child: IconButton(
-                                  tooltip: 'Google',
-                                  onPressed: () async => await context
-                                      .watch<SignInAuth>()
-                                      .googleLogin(),
-                                  icon: Image.asset(
-                                      'lib/assets/icons/google.png')))
-                        ])),
+                                  tooltip: 'Phone',
+                                  onPressed: () =>
+                                      Navigator.pushNamed(context, '/mobile'),
+                                  icon: const Icon(Icons.phone)),
+                            ),
+                            const SizedBox(width: 35),
+                            CircleAvatar(
+                                child: IconButton(
+                                    tooltip: 'Google',
+                                    onPressed: () async =>
+                                        await provider.googleLogin(),
+                                    icon: Image.asset(
+                                        'lib/assets/icons/google.png')))
+                          ])),
+                ),
                 Padding(
                   padding: const EdgeInsets.only(top: 16),
                   child: Row(
